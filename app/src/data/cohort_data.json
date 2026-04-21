@@ -1,0 +1,16 @@
+{
+  "cohort": {
+    "name": "Placeholder — run ETL and replace this file",
+    "students": 0,
+    "certified": 0,
+    "avg_weighted_score": 0
+  },
+  "competencies": [],
+  "students": [],
+  "cohort_analytics": {
+    "strongest_competencies": [],
+    "weakest_competencies": [],
+    "avg_self_vs_peer_gap": 0,
+    "cluster_rankings": []
+  }
+}
