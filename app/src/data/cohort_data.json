@@ -1,16 +1,652 @@
 {
   "cohort": {
-    "name": "Placeholder — run ETL and replace this file",
-    "students": 0,
-    "certified": 0,
-    "avg_weighted_score": 0
+    "name": "Spring 2026 - Brownsville",
+    "students": 3,
+    "certified": 1,
+    "avg_weighted_score": 3.04
   },
-  "competencies": [],
-  "students": [],
+  "competencies": [
+    {
+      "id": 1,
+      "name": "AI Literacy & Prompting",
+      "cluster": "AI & Digital Fluency",
+      "cluster_index": 0,
+      "weight": 0.045
+    },
+    {
+      "id": 2,
+      "name": "Automation & Workflow Design",
+      "cluster": "AI & Digital Fluency",
+      "cluster_index": 0,
+      "weight": 0.045
+    },
+    {
+      "id": 3,
+      "name": "Digital Research & Synthesis",
+      "cluster": "AI & Digital Fluency",
+      "cluster_index": 0,
+      "weight": 0.045
+    },
+    {
+      "id": 4,
+      "name": "Data Interpretation & Storytelling",
+      "cluster": "AI & Digital Fluency",
+      "cluster_index": 0,
+      "weight": 0.045
+    },
+    {
+      "id": 5,
+      "name": "Problem Framing & Root Cause Analysis",
+      "cluster": "Product & Entrepreneurial Thinking",
+      "cluster_index": 1,
+      "weight": 0.046667
+    },
+    {
+      "id": 6,
+      "name": "Market & User Research",
+      "cluster": "Product & Entrepreneurial Thinking",
+      "cluster_index": 1,
+      "weight": 0.046667
+    },
+    {
+      "id": 7,
+      "name": "Product Ideation & MVP Design",
+      "cluster": "Product & Entrepreneurial Thinking",
+      "cluster_index": 1,
+      "weight": 0.046667
+    },
+    {
+      "id": 8,
+      "name": "Business Model Thinking",
+      "cluster": "Product & Entrepreneurial Thinking",
+      "cluster_index": 1,
+      "weight": 0.046667
+    },
+    {
+      "id": 9,
+      "name": "Execution & Iteration",
+      "cluster": "Product & Entrepreneurial Thinking",
+      "cluster_index": 1,
+      "weight": 0.046667
+    },
+    {
+      "id": 10,
+      "name": "Systems Thinking",
+      "cluster": "Product & Entrepreneurial Thinking",
+      "cluster_index": 1,
+      "weight": 0.046667
+    },
+    {
+      "id": 11,
+      "name": "Self-Awareness & Emotional Regulation",
+      "cluster": "Leadership & Social Influence",
+      "cluster_index": 2,
+      "weight": 0.045
+    },
+    {
+      "id": 12,
+      "name": "Team Collaboration & Trust-Building",
+      "cluster": "Leadership & Social Influence",
+      "cluster_index": 2,
+      "weight": 0.045
+    },
+    {
+      "id": 13,
+      "name": "Conflict Navigation & Resolution",
+      "cluster": "Leadership & Social Influence",
+      "cluster_index": 2,
+      "weight": 0.045
+    },
+    {
+      "id": 14,
+      "name": "Public Speaking & Presentation",
+      "cluster": "Leadership & Social Influence",
+      "cluster_index": 2,
+      "weight": 0.045
+    },
+    {
+      "id": 15,
+      "name": "Coaching & Mentoring Others",
+      "cluster": "Leadership & Social Influence",
+      "cluster_index": 2,
+      "weight": 0.045
+    },
+    {
+      "id": 16,
+      "name": "Negotiation & Persuasion",
+      "cluster": "Leadership & Social Influence",
+      "cluster_index": 2,
+      "weight": 0.045
+    },
+    {
+      "id": 17,
+      "name": "Resume & LinkedIn Presence",
+      "cluster": "Professional Readiness",
+      "cluster_index": 3,
+      "weight": 0.0425
+    },
+    {
+      "id": 18,
+      "name": "Interview Readiness",
+      "cluster": "Professional Readiness",
+      "cluster_index": 3,
+      "weight": 0.0425
+    },
+    {
+      "id": 19,
+      "name": "Professional Communication",
+      "cluster": "Professional Readiness",
+      "cluster_index": 3,
+      "weight": 0.0425
+    },
+    {
+      "id": 20,
+      "name": "Networking & Relationship Building",
+      "cluster": "Professional Readiness",
+      "cluster_index": 3,
+      "weight": 0.0425
+    },
+    {
+      "id": 21,
+      "name": "Cultural Competence & Inclusion",
+      "cluster": "Community & Social Impact",
+      "cluster_index": 4,
+      "weight": 0.05
+    },
+    {
+      "id": 22,
+      "name": "Community Problem-Solving",
+      "cluster": "Community & Social Impact",
+      "cluster_index": 4,
+      "weight": 0.05
+    }
+  ],
+  "students": [
+    {
+      "id": "student_1",
+      "name": "Maria Garcia",
+      "team": "Team A",
+      "scores": {
+        "self_scores": [
+          4.0,
+          4.0,
+          4.0,
+          3.0,
+          4.0,
+          3.0,
+          4.0,
+          4.0,
+          4.0,
+          3.0,
+          4.0,
+          4.0,
+          3.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          3.0,
+          4.0,
+          4.0
+        ],
+        "peer_avg": [
+          3.8,
+          3.7,
+          3.9,
+          3.5,
+          3.8,
+          3.2,
+          3.9,
+          3.7,
+          3.9,
+          3.1,
+          3.9,
+          3.8,
+          3.2,
+          3.9,
+          3.5,
+          2.3,
+          3.6,
+          3.9,
+          3.8,
+          3.2,
+          3.8,
+          3.6
+        ],
+        "peer_count": [
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          3
+        ],
+        "staff_avg": [
+          4.0,
+          3.5,
+          4.0,
+          3.5,
+          4.0,
+          3.5,
+          4.0,
+          3.5,
+          4.0,
+          3.5,
+          4.0,
+          3.5,
+          3.5,
+          4.0,
+          3.5,
+          3.5,
+          4.0,
+          3.5,
+          4.0,
+          3.5,
+          4.0,
+          3.5
+        ],
+        "staff_count": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "cluster_averages": {
+        "ai_digital": 3.725,
+        "product": 3.6,
+        "leadership": 3.433,
+        "professional": 3.625,
+        "community": 3.7
+      },
+      "weighted_overall": 3.592,
+      "certification": {
+        "status": "CERTIFIED",
+        "meets_score_bar": true,
+        "sprints_complete": true,
+        "demo_day": true,
+        "negotiation_sim": true
+      },
+      "flags": {
+        "perception_gaps": [
+          {
+            "competency_id": 16,
+            "competency_name": "Negotiation & Persuasion",
+            "self_score": 4.0,
+            "peer_avg": 2.3,
+            "gap": 1.7
+          }
+        ],
+        "staff_divergence": []
+      }
+    },
+    {
+      "id": "student_2",
+      "name": "Diego Reyes",
+      "team": "Team B",
+      "scores": {
+        "self_scores": [
+          3.0,
+          3.0,
+          4.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0,
+          4.0,
+          3.0,
+          3.0,
+          4.0,
+          3.0,
+          3.0,
+          4.0,
+          3.0,
+          3.0,
+          3.0,
+          4.0,
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "peer_avg": [
+          3.2,
+          3.0,
+          3.5,
+          3.1,
+          3.3,
+          3.0,
+          3.2,
+          3.5,
+          3.2,
+          2.9,
+          3.6,
+          3.1,
+          3.0,
+          3.5,
+          3.2,
+          3.0,
+          3.1,
+          3.4,
+          3.2,
+          2.9,
+          3.2,
+          3.0
+        ],
+        "peer_count": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "staff_avg": [
+          3.5,
+          3.0,
+          3.5,
+          3.0,
+          3.5,
+          3.0,
+          3.5,
+          3.5,
+          3.0,
+          3.0,
+          3.5,
+          3.0,
+          3.0,
+          3.5,
+          3.0,
+          3.0,
+          3.0,
+          3.5,
+          3.0,
+          3.0,
+          3.5,
+          3.0
+        ],
+        "staff_count": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "cluster_averages": {
+        "ai_digital": 3.2,
+        "product": 3.183,
+        "leadership": 3.233,
+        "professional": 3.15,
+        "community": 3.1
+      },
+      "weighted_overall": 3.186,
+      "certification": {
+        "status": "CONDITIONAL",
+        "meets_score_bar": true,
+        "sprints_complete": true,
+        "demo_day": false,
+        "negotiation_sim": true
+      },
+      "flags": {
+        "perception_gaps": [],
+        "staff_divergence": []
+      }
+    },
+    {
+      "id": "student_3",
+      "name": "Ana Flores",
+      "team": "Team B",
+      "scores": {
+        "self_scores": [
+          3.0,
+          2.0,
+          3.0,
+          2.0,
+          3.0,
+          2.0,
+          2.0,
+          3.0,
+          2.0,
+          2.0,
+          3.0,
+          2.0,
+          2.0,
+          3.0,
+          2.0,
+          2.0,
+          3.0,
+          2.0,
+          3.0,
+          2.0,
+          3.0,
+          2.0
+        ],
+        "peer_avg": [
+          2.3,
+          2.0,
+          2.5,
+          2.1,
+          2.7,
+          2.0,
+          2.3,
+          2.5,
+          2.1,
+          2.2,
+          2.8,
+          2.3,
+          2.1,
+          2.5,
+          2.2,
+          2.0,
+          2.7,
+          2.4,
+          2.8,
+          2.1,
+          2.5,
+          2.3
+        ],
+        "peer_count": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "staff_avg": [
+          2.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5,
+          2.5,
+          2.0,
+          2.0,
+          3.0,
+          2.5,
+          2.0,
+          2.5,
+          2.0,
+          2.0,
+          2.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5,
+          2.0
+        ],
+        "staff_count": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "cluster_averages": {
+        "ai_digital": 2.225,
+        "product": 2.3,
+        "leadership": 2.317,
+        "professional": 2.5,
+        "community": 2.4
+      },
+      "weighted_overall": 2.335,
+      "certification": {
+        "status": "NOT_CERTIFIED",
+        "meets_score_bar": false,
+        "sprints_complete": false,
+        "demo_day": false,
+        "negotiation_sim": false
+      },
+      "flags": {
+        "perception_gaps": [],
+        "staff_divergence": []
+      }
+    }
+  ],
   "cohort_analytics": {
-    "strongest_competencies": [],
-    "weakest_competencies": [],
-    "avg_self_vs_peer_gap": 0,
-    "cluster_rankings": []
+    "strongest_competencies": [
+      "Self-Awareness & Emotional Regulation",
+      "Digital Research & Synthesis",
+      "Public Speaking & Presentation"
+    ],
+    "weakest_competencies": [
+      "Negotiation & Persuasion",
+      "Market & User Research",
+      "Networking & Relationship Building"
+    ],
+    "avg_self_vs_peer_gap": 0.1,
+    "cluster_rankings": [
+      {
+        "cluster": "Professional Readiness",
+        "avg_score": 3.09,
+        "rank": 1
+      },
+      {
+        "cluster": "Community & Social Impact",
+        "avg_score": 3.07,
+        "rank": 2
+      },
+      {
+        "cluster": "AI & Digital Fluency",
+        "avg_score": 3.05,
+        "rank": 3
+      },
+      {
+        "cluster": "Product & Entrepreneurial Thinking",
+        "avg_score": 3.03,
+        "rank": 4
+      },
+      {
+        "cluster": "Leadership & Social Influence",
+        "avg_score": 2.99,
+        "rank": 5
+      }
+    ]
   }
 }
