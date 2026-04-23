@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import { CertBadge } from "../shared/CertBadge";
 import { PerceptionGapFlag } from "../shared/PerceptionGapFlag";
 import { ClusterBars } from "../shared/charts/ClusterBars";
@@ -5,6 +7,7 @@ import { RadarChart } from "../shared/charts/RadarChart";
 import { useCohortData } from "../../hooks/useCohortData";
 import { fmt, scoreTextColor, topGrowthAreas, topStrengths } from "../../utils/scoring";
 import type { CertificationRecord } from "../../types";
+import { StudentPrint } from "./StudentPrint";
 
 interface StudentDeepDiveProps {
   studentId: string | null;
@@ -80,16 +83,41 @@ export function StudentDeepDive({ studentId, onBackToCohort }: StudentDeepDivePr
 
   const strengths = topStrengths(student, competencies);
   const growthAreas = topGrowthAreas(student, competencies);
+  const printRef = useRef<HTMLDivElement>(null);
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+    documentTitle: `FLI Credential - ${student.name}`,
+  });
 
   return (
     <div className="space-y-6">
-      <button
-        type="button"
-        onClick={onBackToCohort}
-        className="text-sm font-medium text-indigo-700 hover:text-indigo-900"
-      >
-        Back to Cohort
-      </button>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={onBackToCohort}
+          className="text-sm font-medium text-indigo-700 hover:text-indigo-900"
+        >
+          Back to Cohort
+        </button>
+        <button
+          type="button"
+          onClick={handlePrint}
+          className="rounded-md bg-gray-950 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
+        >
+          Export PDF
+        </button>
+      </div>
+
+      <div className="fixed left-[-10000px] top-0">
+        <div ref={printRef}>
+          <StudentPrint
+            student={student}
+            competencies={competencies}
+            strengths={strengths}
+            growthAreas={growthAreas}
+          />
+        </div>
+      </div>
 
       <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">

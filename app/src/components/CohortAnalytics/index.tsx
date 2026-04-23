@@ -1,7 +1,10 @@
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import { useCohortData } from "../../hooks/useCohortData";
 import { fmt, scoreTextColor } from "../../utils/scoring";
 import { CohortHeatmap } from "../shared/charts/CohortHeatmap";
 import { SelfPeerDivergenceChart } from "../shared/charts/SelfPeerDivergenceChart";
+import { CohortPrint } from "./CohortPrint";
 
 interface SummaryCardProps {
   label: string;
@@ -71,14 +74,41 @@ export function CohortAnalytics() {
     0
   );
   const strongestCluster = data.cohort_analytics.cluster_rankings[0];
+  const printRef = useRef<HTMLDivElement>(null);
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+    documentTitle: `FLI Cohort Report - ${data.cohort.name}`,
+  });
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Cohort Analytics</h1>
-        <p className="mt-1 text-sm text-gray-500">
-          {data.cohort.name} - cohort-level competency patterns and calibration signals
-        </p>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Cohort Analytics</h1>
+          <p className="mt-1 text-sm text-gray-500">
+            {data.cohort.name} - cohort-level competency patterns and calibration signals
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handlePrint}
+          className="rounded-md bg-gray-950 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
+        >
+          Export Cohort Report
+        </button>
+      </div>
+
+      <div className="fixed left-[-10000px] top-0">
+        <div ref={printRef}>
+          <CohortPrint
+            data={data}
+            students={students}
+            certifiedCount={certifiedCount}
+            totalStudents={totalStudents}
+            conditionalCount={conditionalCount}
+            perceptionGapCount={perceptionGapCount}
+          />
+        </div>
       </div>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
