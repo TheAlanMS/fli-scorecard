@@ -353,6 +353,20 @@ Week 5 — Testing + Deployment
 [ ] Vercel deployment live (private link)
 [ ] All 11 student PDFs generated and delivered
 [ ] Cohort impact report PDF delivered to Ruben
+
+### Current Week 5 Execution Runbook
+
+Week 5 is now documented in `docs/week-5-testing-deployment.md`. Follow that runbook for final
+ETL validation, staff walkthrough QA, bug triage, private Vercel deployment, deployment smoke
+testing, and PDF delivery. The runbook keeps the current schema, scoring rules, dependencies,
+backend-free architecture, and real-data handling policy unchanged.
+
+- `app/vercel.json` pins the intended Vercel app-root build settings: Vite, `npm run build`, and
+  `dist`.
+- Real workbook processing and real generated JSON remain local-only delivery steps. Do not commit
+  Ruben's workbook or the real `app/src/data/cohort_data.json`.
+- GitHub auto-deploy remains appropriate only for sample/anonymized data unless Alan approves a
+  different real-data handling process.
 ```
 
 ---
