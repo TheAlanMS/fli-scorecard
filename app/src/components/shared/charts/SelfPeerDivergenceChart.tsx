@@ -10,6 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import type { Competency, Student } from "../../../types";
+import { isTrustedScore } from "../../../utils/scoring";
 
 interface SelfPeerDivergenceChartProps {
   students: Student[];
@@ -24,9 +25,12 @@ interface DivergencePoint {
 }
 
 function averageAbsoluteGap(student: Student): number {
-  const gaps = student.scores.self_scores.map((selfScore, index) =>
-    Math.abs(selfScore - (student.scores.peer_avg[index] ?? 0))
-  );
+  const gaps = student.scores.self_scores.flatMap((selfScore, index) => {
+    const peerScore = student.scores.peer_avg[index];
+    return isTrustedScore(selfScore) && isTrustedScore(peerScore)
+      ? [Math.abs(selfScore - peerScore)]
+      : [];
+  });
 
   if (gaps.length === 0) return 0;
 
@@ -36,7 +40,9 @@ function averageAbsoluteGap(student: Student): number {
 function maxGap(student: Student, competencies: Competency[]) {
   return student.scores.self_scores.reduce(
     (current, selfScore, index) => {
-      const gap = Math.abs(selfScore - (student.scores.peer_avg[index] ?? 0));
+      const peerScore = student.scores.peer_avg[index];
+      if (!isTrustedScore(selfScore) || !isTrustedScore(peerScore)) return current;
+      const gap = Math.abs(selfScore - peerScore);
       if (gap <= current.gap) return current;
 
       return {

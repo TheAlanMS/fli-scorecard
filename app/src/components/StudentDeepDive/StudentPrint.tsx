@@ -1,13 +1,13 @@
 import { CertBadge } from "../shared/CertBadge";
-import { fmt } from "../../utils/scoring";
+import { fmt, type ScoreListItem } from "../../utils/scoring";
 import type { CertificationRecord, ClusterAverages, Competency, Student } from "../../types";
 import { CLUSTER_DISPLAY_NAMES, CLUSTER_KEYS } from "../../types";
 
 interface StudentPrintProps {
   student: Student;
   competencies: Competency[];
-  strengths: { name: string; score: number }[];
-  growthAreas: { name: string; score: number }[];
+  strengths: ScoreListItem[];
+  growthAreas: ScoreListItem[];
 }
 
 interface GateItem {
@@ -137,6 +137,9 @@ export function StudentPrint({
                 <span className="font-black tabular-nums">{fmt(item.score)}</span>
               </li>
             ))}
+            {strengths.length === 0 && (
+              <li className="text-sm text-gray-500">N/A - peer score data incomplete.</li>
+            )}
           </ol>
         </div>
 
@@ -154,6 +157,9 @@ export function StudentPrint({
                 <span className="font-black tabular-nums">{fmt(item.score)}</span>
               </li>
             ))}
+            {growthAreas.length === 0 && (
+              <li className="text-sm text-gray-500">N/A - peer score data incomplete.</li>
+            )}
           </ol>
         </div>
       </section>

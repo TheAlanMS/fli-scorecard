@@ -3,7 +3,7 @@
 **Client:** Frontera Leadership Institute (FLI) — Ruben Cantu  
 **Built by:** Alan Salinas — Caelus Consulting  
 **Deadline:** ~May 8, 2026  
-**Status:** Week 2 complete — Week 3 next: Real Data + PDF Export
+**Status:** Week 4 in progress - AI Self-Check + polish
 
 ---
 
@@ -27,7 +27,7 @@ See `docs/` for the build spec and Claude Code kickoff prompt.
 fli-scorecard/
 ├── etl/           Python ETL — run locally to process .xlsx → JSON
 ├── app/           React dashboard — deploy to Vercel
-├── ai-self-check/ Standalone AI Self-Check artifact (Anthropic API)
+├── ai-self-check/ Standalone AI Self-Check prompt builder (no API)
 └── docs/          Build spec and kickoff prompts
 ```
 
@@ -77,10 +77,12 @@ etl/etl.py  →  cohort_data.json  →  app/src/data/  →  React dashboard
 
 ## PDF Export
 
-Planned for Week 3:
-
 - **Screen 2** (Student Deep Dive) → "Export PDF" → student credential one-pager
 - **Screen 3** (Cohort Analytics) → "Export Cohort Report" → BCIC-ready document
+
+## AI Self-Check
+
+Open `ai-self-check/index.html` directly in a browser. It builds a copyable Claude prompt locally; it does not call Anthropic APIs, require a key, or store student data.
 
 ---
 

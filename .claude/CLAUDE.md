@@ -6,7 +6,7 @@ A competency-based evaluation system for the Frontera Leadership Institute (FLI)
 1. **Interactive React dashboard** (3 screens) for staff decision-making
 2. **Per-student PDF credential** — the artifact that travels to employers and BCIC
 3. **Cohort impact report PDF** for institutional ROI conversations
-4. **Standalone AI Self-Check tool** — students calibrate self-evals before submitting (Anthropic API, Socratic mode)
+4. **Standalone AI Self-Check tool** — prompt-only Socratic self-check; no API key, backend, auth, or stored student data
 
 **Client:** Ruben Cantu, Frontera Leadership Institute  
 **Built by:** Alan Salinas — Caelus Consulting  
@@ -29,7 +29,7 @@ Google Forms → Google Sheets → Download .xlsx
        + PDF Export (react-to-print)
 ```
 
-**No backend. No database. No auth.** The Python ETL is the brain. The React app is the face.
+**No backend. No database. No auth.** The Python ETL is the brain. The React app is the face. The AI Self-Check is a local prompt-builder artifact only; students or facilitators paste its generated prompt into their own Claude session.
 
 ---
 
@@ -209,7 +209,7 @@ fli-scorecard/
 │           └── scoring.ts         ← Score formatting, color thresholds, helpers
 │
 ├── ai-self-check/             ← Standalone AI Self-Check (separate artifact)
-│   └── index.html             ← Single-file React app using Anthropic API
+│   └── index.html             ← Single-file static prompt builder; no external APIs
 │
 └── docs/
     ├── build-spec.md          ← Full Option C spec (source: Alan's brief)
@@ -329,11 +329,23 @@ normalized into the current shape. If a schema change becomes necessary, stop an
 - Confirm no real `.xlsx` workbook or real generated JSON is staged for commit.
 
 Week 4 — AI Self-Check + Polish
-[ ] AI Self-Check: Socratic prompt with 22-competency rubric
-[ ] AI Self-Check: Handles score ≥ 4 with probing question
-[ ] AI Self-Check: Single-file artifact (ai-self-check/index.html)
-[ ] App: Edge cases handled (missing scores, incomplete evals)
-[ ] App: Mobile-safe layout (tablet minimum)
+[x] AI Self-Check: Prompt-only Socratic self-check flow documented
+[x] AI Self-Check: 22-competency rubric embedded in generated Claude prompt
+[x] AI Self-Check: Handles intended score >= 4 with required probing question
+[x] AI Self-Check: Single-file static artifact (`ai-self-check/index.html`)
+[x] App: Edge cases handled for missing scores and incomplete evals
+[ ] App: Tablet-safe layout verified
+
+### Current Week 4 Implementation Plan
+
+Week 4 changes the AI Self-Check from a live API design into a standalone prompt-builder artifact. `ai-self-check/index.html` asks the student or facilitator for context, selected competency, intended score, supporting evidence, and uncertainties, then generates a Claude-ready Socratic calibration prompt.
+
+- No Anthropic API key is required.
+- No backend/proxy is added.
+- No auth or stored student data is added.
+- The student or facilitator runs the generated prompt in their own Claude session.
+- The self-check is calibration support only; it does not change ETL scoring, certification rules, or dashboard schema.
+- Intended scores >= 4 must require Claude to ask at least one probing question about evidence quality, consistency, independence, or impact before accepting the high score.
 
 Week 5 — Testing + Deployment
 [ ] Staff walkthrough completed with Ruben

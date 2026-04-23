@@ -1,4 +1,4 @@
-import { fmt, heatmapColor } from "../../utils/scoring";
+import { fmt, heatmapColor, isTrustedScore, scoreForSort } from "../../utils/scoring";
 import type { CohortData, Student } from "../../types";
 import { CLUSTER_DISPLAY_NAMES, CLUSTER_KEYS } from "../../types";
 
@@ -12,10 +12,13 @@ interface CohortPrintProps {
 }
 
 function averageSelfPeerGap(student: Student): number {
-  const gaps = student.scores.self_scores.map((score, index) =>
-    Math.abs(score - student.scores.peer_avg[index])
-  );
-  return gaps.reduce((sum, gap) => sum + gap, 0) / gaps.length;
+  const gaps = student.scores.self_scores.flatMap((score, index) => {
+    const peerScore = student.scores.peer_avg[index];
+    return isTrustedScore(score) && isTrustedScore(peerScore)
+      ? [Math.abs(score - peerScore)]
+      : [];
+  });
+  return gaps.length > 0 ? gaps.reduce((sum, gap) => sum + gap, 0) / gaps.length : 0;
 }
 
 function certificationRate(certifiedCount: number, totalStudents: number): number {
@@ -31,7 +34,7 @@ export function CohortPrint({
   perceptionGapCount,
 }: CohortPrintProps) {
   const sortedStudents = [...students].sort(
-    (a, b) => b.weighted_overall - a.weighted_overall
+    (a, b) => scoreForSort(b.weighted_overall) - scoreForSort(a.weighted_overall)
   );
   const divergenceHighlights = [...students]
     .map((student) => ({

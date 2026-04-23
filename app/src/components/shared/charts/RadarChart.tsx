@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { scoreOrNull } from "../../../utils/scoring";
 
 interface RadarChartProps {
   studentName:     string;
@@ -20,9 +21,9 @@ interface RadarChartProps {
 interface RadarDataPoint {
   subject:  string;
   fullName: string;
-  self:     number;
-  peer:     number;
-  staff:    number;
+  self:     number | null;
+  peer:     number | null;
+  staff:    number | null;
 }
 
 export function RadarChart({
@@ -35,9 +36,9 @@ export function RadarChart({
   const chartData: RadarDataPoint[] = competencyNames.map((name, i) => ({
     subject:  `C${i + 1}`,
     fullName: name,
-    self:     selfScores[i]  ?? 0,
-    peer:     peerAvg[i]     ?? 0,
-    staff:    staffAvg[i]    ?? 0,
+    self:     scoreOrNull(selfScores[i]),
+    peer:     scoreOrNull(peerAvg[i]),
+    staff:    scoreOrNull(staffAvg[i]),
   }));
 
   return (

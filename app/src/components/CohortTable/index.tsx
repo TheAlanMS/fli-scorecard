@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCohortData } from "../../hooks/useCohortData";
 import { CertBadge } from "../shared/CertBadge";
-import { fmt, scoreTextColor } from "../../utils/scoring";
+import { fmt, scoreForSort, scoreTextColor } from "../../utils/scoring";
 import type { Student } from "../../types";
 
 type SortField = "weighted_overall" | "name" | "team";
@@ -36,7 +36,7 @@ export function CohortTable({ onSelectStudent }: CohortTableProps) {
   const sorted = [...students].sort((a: Student, b: Student) => {
     let cmp = 0;
     if (sortField === "weighted_overall") {
-      cmp = a.weighted_overall - b.weighted_overall;
+      cmp = scoreForSort(a.weighted_overall) - scoreForSort(b.weighted_overall);
     } else if (sortField === "name") {
       cmp = a.name.localeCompare(b.name);
     } else {
@@ -66,8 +66,8 @@ export function CohortTable({ onSelectStudent }: CohortTableProps) {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
+      <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+        <table className="min-w-[46rem] divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th

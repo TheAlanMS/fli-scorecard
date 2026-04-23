@@ -5,7 +5,13 @@ import { PerceptionGapFlag } from "../shared/PerceptionGapFlag";
 import { ClusterBars } from "../shared/charts/ClusterBars";
 import { RadarChart } from "../shared/charts/RadarChart";
 import { useCohortData } from "../../hooks/useCohortData";
-import { fmt, scoreTextColor, topGrowthAreas, topStrengths } from "../../utils/scoring";
+import {
+  fmt,
+  scoreTextColor,
+  topGrowthAreas,
+  topStrengths,
+  type ScoreListItem,
+} from "../../utils/scoring";
 import type { CertificationRecord } from "../../types";
 import { StudentPrint } from "./StudentPrint";
 
@@ -34,7 +40,7 @@ function ScoreList({
   tone,
 }: {
   title: string;
-  items: { name: string; score: number }[];
+  items: ScoreListItem[];
   tone: "strength" | "growth";
 }) {
   const toneClass =
@@ -45,19 +51,23 @@ function ScoreList({
   return (
     <section className={`rounded-lg border p-4 ${toneClass}`}>
       <h2 className="text-sm font-semibold">{title}</h2>
-      <ol className="mt-3 space-y-2">
-        {items.map((item, index) => (
-          <li key={item.name} className="flex items-start justify-between gap-3">
-            <span className="text-sm">
-              <span className="mr-2 font-semibold tabular-nums">{index + 1}.</span>
-              {item.name}
-            </span>
-            <span className="rounded-full bg-white/80 px-2 py-0.5 text-xs font-semibold tabular-nums">
-              {fmt(item.score)}
-            </span>
-          </li>
-        ))}
-      </ol>
+      {items.length > 0 ? (
+        <ol className="mt-3 space-y-2">
+          {items.map((item, index) => (
+            <li key={item.name} className="flex items-start justify-between gap-3">
+              <span className="text-sm">
+                <span className="mr-2 font-semibold tabular-nums">{index + 1}.</span>
+                {item.name}
+              </span>
+              <span className="rounded-full bg-white/80 px-2 py-0.5 text-xs font-semibold tabular-nums">
+                {fmt(item.score)}
+              </span>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="mt-3 text-sm opacity-80">N/A - peer score data incomplete.</p>
+      )}
     </section>
   );
 }
@@ -159,7 +169,7 @@ export function StudentDeepDive({ studentId, onBackToCohort }: StudentDeepDivePr
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)]">
+      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)]">
         <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
           <RadarChart
             studentName={student.name}

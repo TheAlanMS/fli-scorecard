@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import type { ClusterAverages } from "../../../types";
 import { CERTIFICATION_SCORE_THRESHOLD, CLUSTER_DISPLAY_NAMES, CLUSTER_KEYS } from "../../../types";
-import { fmt } from "../../../utils/scoring";
+import { fmt, scoreOrNull } from "../../../utils/scoring";
 
 interface ClusterBarsProps {
   clusterAverages: ClusterAverages;
@@ -18,13 +18,13 @@ interface ClusterBarsProps {
 
 interface ClusterBarPoint {
   cluster: string;
-  score: number;
+  score: number | null;
 }
 
 export function ClusterBars({ clusterAverages }: ClusterBarsProps) {
   const chartData: ClusterBarPoint[] = CLUSTER_KEYS.map((key) => ({
     cluster: CLUSTER_DISPLAY_NAMES[key],
-    score: clusterAverages[key],
+    score: scoreOrNull(clusterAverages[key]),
   }));
 
   return (

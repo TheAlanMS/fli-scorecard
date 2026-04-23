@@ -1,6 +1,6 @@
 import { CLUSTER_DISPLAY_NAMES, CLUSTER_KEYS } from "../../../types";
 import type { Student } from "../../../types";
-import { fmt, heatmapColor } from "../../../utils/scoring";
+import { fmt, heatmapColor, scoreForSort } from "../../../utils/scoring";
 
 interface CohortHeatmapProps {
   students: Student[];
@@ -8,7 +8,7 @@ interface CohortHeatmapProps {
 
 export function CohortHeatmap({ students }: CohortHeatmapProps) {
   const orderedStudents = [...students].sort(
-    (a, b) => b.weighted_overall - a.weighted_overall
+    (a, b) => scoreForSort(b.weighted_overall) - scoreForSort(a.weighted_overall)
   );
 
   return (
