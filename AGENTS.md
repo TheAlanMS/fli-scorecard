@@ -1,7 +1,7 @@
 # AGENTS.md — Agent Behavior Rules
 
-## Read CLAUDE.md First
-Before every task in this repo, read `CLAUDE.md` in full. It contains the architecture, tech stack locked decisions, data schema, business rules, and coding conventions. Never assume — verify against CLAUDE.md.
+## Read .claude/CLAUDE.md First
+Before every task in this repo, read `.claude/CLAUDE.md` in full. It contains the architecture, tech stack locked decisions, data schema, business rules, and coding conventions. Never assume — verify against `.claude/CLAUDE.md`.
 
 ---
 

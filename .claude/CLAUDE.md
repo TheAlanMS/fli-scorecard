@@ -160,7 +160,8 @@ The JSON shape produced by ETL and consumed by React:
 
 ```
 fli-scorecard/
-├── CLAUDE.md                  ← You are here. Read this every session.
+├── .claude/
+│   └── CLAUDE.md              ← You are here. Read this every session.
 ├── AGENTS.md                  ← Agent behavior rules
 ├── README.md                  ← Setup and run instructions
 ├── .gitignore
@@ -198,7 +199,8 @@ fli-scorecard/
 │       │       ├── charts/
 │       │       │   ├── RadarChart.tsx     ← Self/peer/staff overlay radar
 │       │       │   ├── ClusterBars.tsx    ← 5-cluster bar chart
-│       │       │   └── CohortHeatmap.tsx  ← 11×5 cluster heatmap
+│       │       │   ├── CohortHeatmap.tsx  ← 11×5 cluster heatmap
+│       │       │   └── SelfPeerDivergenceChart.tsx  ← Self-vs-peer gap chart
 │       │       ├── CertBadge.tsx          ← Traffic-light status badge
 │       │       └── PerceptionGapFlag.tsx  ← Amber flag component
 │       ├── hooks/
@@ -220,32 +222,42 @@ fli-scorecard/
 
 Update checkboxes as work is completed.
 
+## Current Dashboard Implementation
+
+Week 2 dashboard screens are implemented in `app/src` and verified with `cmd /c npm --prefix app run build`.
+
+- **Screen 1: Cohort Command Center** lives in `components/CohortTable/index.tsx`. It renders students from `useCohortData`, supports sorting by weighted score, name, and team, shows `CertBadge`, and sends the selected student ID to `App.tsx` when a row is clicked.
+- **Screen 2: Student Deep Dive** lives in `components/StudentDeepDive/index.tsx`. It shows the selected student's summary, certification gates, `RadarChart`, `ClusterBars`, top strengths, growth areas, and amber `PerceptionGapFlag` cards. Strengths and growth areas are generated from `utils/scoring.ts`.
+- **Screen 3: Cohort Analytics** lives in `components/CohortAnalytics/index.tsx`. It shows cohort summary cards, `CohortHeatmap`, `SelfPeerDivergenceChart`, cluster rankings, and strongest/weakest competencies from `cohort_analytics`.
+- **Routing** stays in `App.tsx` with local screen state only. There is still no backend, database, auth, or async data fetching.
+- **Chart rule:** screen components should keep using shared wrappers under `components/shared/charts/`; do not import Recharts primitives directly into screen components.
+
 ```
 Week 1 — Data Pipeline + Scaffold
-[ ] ETL: schema.py complete with all 22 competencies
-[ ] ETL: etl.py parses self-eval sheet
-[ ] ETL: etl.py parses peer-eval sheet (aggregates per student)
-[ ] ETL: etl.py parses staff-eval sheet
-[ ] ETL: compute_cluster_averages() working
-[ ] ETL: compute_weighted_overall() working
-[ ] ETL: perception gap + staff divergence flags working
-[ ] ETL: outputs valid cohort_data.json from sample .xlsx
-[ ] App: Vite + React + TypeScript + Tailwind scaffolded
-[ ] App: cohort_data.json loaded via useCohortData hook
-[ ] App: RadarChart component renders with sample data
+[x] ETL: schema.py complete with all 22 competencies
+[x] ETL: etl.py parses self-eval sheet
+[x] ETL: etl.py parses peer-eval sheet (aggregates per student)
+[x] ETL: etl.py parses staff-eval sheet
+[x] ETL: compute_cluster_averages() working
+[x] ETL: compute_weighted_overall() working
+[x] ETL: perception gap + staff divergence flags working
+[x] ETL: outputs valid cohort_data.json from sample .xlsx
+[x] App: Vite + React + TypeScript + Tailwind scaffolded
+[x] App: cohort_data.json loaded via useCohortData hook
+[x] App: RadarChart component renders with sample data
 
 Week 2 — Dashboard Screens
-[ ] Screen 1: Cohort table renders all students
-[ ] Screen 1: Sort by weighted score, name, team
-[ ] Screen 1: Traffic-light cert badges (green/yellow/red)
-[ ] Screen 1: Click row → navigate to Screen 2
-[ ] Screen 2: Radar chart with self/peer/staff overlay
-[ ] Screen 2: Cluster bar chart with threshold line at 3.0
-[ ] Screen 2: Top 3 Strengths / Top 3 Growth Areas auto-generated
-[ ] Screen 2: Perception gap flags shown in amber
-[ ] Screen 3: 11×5 cluster heatmap
-[ ] Screen 3: Self vs. peer divergence chart
-[ ] Screen 3: Strongest/weakest competencies from cohort_analytics
+[x] Screen 1: Cohort table renders all students
+[x] Screen 1: Sort by weighted score, name, team
+[x] Screen 1: Traffic-light cert badges (green/yellow/red)
+[x] Screen 1: Click row → navigate to Screen 2
+[x] Screen 2: Radar chart with self/peer/staff overlay
+[x] Screen 2: Cluster bar chart with threshold line at 3.0
+[x] Screen 2: Top 3 Strengths / Top 3 Growth Areas auto-generated
+[x] Screen 2: Perception gap flags shown in amber
+[x] Screen 3: 11×5 cluster heatmap
+[x] Screen 3: Self vs. peer divergence chart
+[x] Screen 3: Strongest/weakest competencies from cohort_analytics
 
 Week 3 — Real Data + PDF Export
 [ ] ETL: Process real evaluation .xlsx files

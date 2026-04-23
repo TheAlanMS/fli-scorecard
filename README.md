@@ -3,7 +3,7 @@
 **Client:** Frontera Leadership Institute (FLI) — Ruben Cantu  
 **Built by:** Alan Salinas — Caelus Consulting  
 **Deadline:** ~May 8, 2026  
-**Status:** 🔴 Week 1 — In Progress
+**Status:** Week 2 complete — Week 3 next: Real Data + PDF Export
 
 ---
 
@@ -16,7 +16,7 @@ A competency-based evaluation system for FLI's 11-student Spring 2026 cohort. Tr
 - Cohort impact report for institutional stakeholders
 - Standalone AI Self-Check tool for student self-calibration
 
-See `CLAUDE.md` for full architecture, schema, and tech decisions.  
+See `.claude/CLAUDE.md` for full architecture, schema, and tech decisions.  
 See `docs/` for the build spec and Claude Code kickoff prompt.
 
 ---
@@ -77,7 +77,7 @@ etl/etl.py  →  cohort_data.json  →  app/src/data/  →  React dashboard
 
 ## PDF Export
 
-From the running app:
+Planned for Week 3:
 
 - **Screen 2** (Student Deep Dive) → "Export PDF" → student credential one-pager
 - **Screen 3** (Cohort Analytics) → "Export Cohort Report" → BCIC-ready document
@@ -86,4 +86,4 @@ From the running app:
 
 ## Build Tracker
 
-See `CLAUDE.md` → Build State Tracker section for week-by-week task checklist.
+See `.claude/CLAUDE.md` → Build State Tracker section for week-by-week task checklist.
