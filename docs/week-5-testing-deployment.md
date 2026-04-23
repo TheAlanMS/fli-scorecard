@@ -2,6 +2,8 @@
 
 Week 5 is the final delivery pass for the Spring 2026 FLI Scorecard. The goal is to validate Ruben's real cohort workbook outside git, walk staff through every dashboard and PDF flow, resolve confirmed issues, deploy a private Vercel build, and deliver 11 student credential PDFs plus the cohort impact report by May 8, 2026.
 
+For a more visual operator guide, start with `docs/week-5-operator-map.md`.
+
 This runbook does not change the JSON schema, scoring rules, certification rules, dependencies, backend, database, auth, or routes.
 
 ## Guardrails
